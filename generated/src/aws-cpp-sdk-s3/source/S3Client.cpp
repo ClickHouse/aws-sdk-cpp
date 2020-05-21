@@ -292,6 +292,17 @@ S3Client::S3Client(const std::shared_ptr<AWSCredentialsProvider>& credentialsPro
   init(m_clientConfiguration);
 }
 
+S3Client::S3Client(const std::shared_ptr<Aws::Client::AWSAuthSigner>& signer,
+                   const Aws::Client::ClientConfiguration& clientConfiguration,
+                   bool useVirtualAddressing /*= true*/,
+                   Aws::S3::US_EAST_1_REGIONAL_ENDPOINT_OPTION USEast1RegionalEndPointOption)
+    : BASECLASS(clientConfiguration, signer, Aws::MakeShared<S3ErrorMarshaller>(ALLOCATION_TAG)),
+      m_clientConfiguration(clientConfiguration, Aws::Client::AWSAuthV4Signer::PayloadSigningPolicy::Never, useVirtualAddressing,
+                            USEast1RegionalEndPointOption),
+      m_endpointProvider(Aws::MakeShared<S3EndpointProvider>(ALLOCATION_TAG)) {
+  init(m_clientConfiguration);
+}
+
 /* End of legacy constructors due deprecation */
 S3Client::~S3Client() { ShutdownSdkClient(this, -1); }
 
