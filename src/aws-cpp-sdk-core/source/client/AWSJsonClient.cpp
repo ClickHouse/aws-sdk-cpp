@@ -47,3 +47,4 @@ const char* AWSJsonClient::GetClientLogTag() const
 {
   return AWS_JSON_CLIENT_LOG_TAG;
 }
+

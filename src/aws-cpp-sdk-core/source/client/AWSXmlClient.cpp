@@ -133,7 +133,7 @@ XmlOutcome AWSXMLClient::ProcessHttpResponse(HttpResponseOutcome& httpOutcome, c
             {{TracingUtils::SMITHY_METHOD_DIMENSION, requestName}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
     }
 
-    if (httpOutcome.GetResult()->GetResponseBody().tellp() > 0)
+    if (httpOutcome.GetResult()->GetResponseBody().peek() != std::char_traits<char>::eof())
     {
         return smithy::components::tracing::TracingUtils::MakeCallWithTiming<XmlOutcome>(
             [&]() -> XmlOutcome {
@@ -175,7 +175,7 @@ XmlOutcome AWSXMLClient::MakeRequest(const Aws::Http::URI& uri,
             {{TracingUtils::SMITHY_METHOD_DIMENSION, requestName}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
     }
 
-    if (httpOutcome.GetResult()->GetResponseBody().tellp() > 0)
+    if (httpOutcome.GetResult()->GetResponseBody().peek() != std::char_traits<char>::eof())
     {
         return smithy::components::tracing::TracingUtils::MakeCallWithTiming<XmlOutcome>(
             [&]() -> XmlOutcome {
@@ -205,7 +205,7 @@ AWSError<CoreErrors> AWSXMLClient::BuildAWSError(const std::shared_ptr<Http::Htt
         bool retryable = httpResponse->GetClientErrorType() == CoreErrors::NETWORK_CONNECTION ? true : false;
         error = AWSError<CoreErrors>(httpResponse->GetClientErrorType(), "", httpResponse->GetClientErrorMessage(), retryable);
     }
-    else if (!httpResponse->GetResponseBody() || httpResponse->GetResponseBody().tellp() < 1)
+    else if (!httpResponse->GetResponseBody() || httpResponse->GetResponseBody().peek() == std::char_traits<char>::eof())
     {
         auto responseCode = httpResponse->GetResponseCode();
         auto errorCode = AWSClient::GuessBodylessErrorType(responseCode);
