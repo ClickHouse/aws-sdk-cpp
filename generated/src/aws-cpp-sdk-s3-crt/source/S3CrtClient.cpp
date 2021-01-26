@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * SPDX-License-Identifier: Apache-2.0.
  */
@@ -702,8 +702,9 @@ Aws::Client::XmlOutcome S3CrtClient::GenerateXmlOutcome(const std::shared_ptr<Ht
     return XmlOutcome(std::move(httpOutcome));
   }
 
-  if (httpOutcome.GetResult()->GetResponseBody().tellp() > 0) {
-    XmlDocument xmlDoc = XmlDocument::CreateFromXmlStream(httpOutcome.GetResult()->GetResponseBody());
+  if (httpOutcome.GetResult()->GetResponseBody().peek() != std::char_traits<char>::eof())
+  {
+      XmlDocument xmlDoc = XmlDocument::CreateFromXmlStream(httpOutcome.GetResult()->GetResponseBody());
 
     if (!xmlDoc.WasParseSuccessful()) {
       AWS_LOGSTREAM_ERROR(ALLOCATION_TAG, "Xml parsing for error failed with message " << xmlDoc.GetErrorMessage().c_str());
