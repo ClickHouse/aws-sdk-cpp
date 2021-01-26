@@ -128,12 +128,6 @@ class AWS_S3_API S3Client : public Aws::Client::AWSXMLClient,
       bool useVirtualAddressing,
       Aws::S3::US_EAST_1_REGIONAL_ENDPOINT_OPTION USEast1RegionalEndPointOption = Aws::S3::US_EAST_1_REGIONAL_ENDPOINT_OPTION::NOT_SET);
 
-  S3Client(
-      const std::shared_ptr<Aws::Client::AWSAuthSigner>& signer,
-      const Aws::Client::ClientConfiguration& clientConfiguration,
-      bool useVirtualAddressing,
-      Aws::S3::US_EAST_1_REGIONAL_ENDPOINT_OPTION USEast1RegionalEndPointOption = Aws::S3::US_EAST_1_REGIONAL_ENDPOINT_OPTION::NOT_SET);
-
   /* End of legacy constructors due deprecation */
   virtual ~S3Client();
 
