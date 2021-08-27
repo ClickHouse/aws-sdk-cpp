@@ -126,7 +126,7 @@ int ResolveConfiguredMaxAttempts(const Aws::String& profileName)
     int maxAttempts = static_cast<int>(Aws::Utils::StringUtils::ConvertToInt32(maxAttemptsString.c_str()));
     if (maxAttempts == 0)
     {
-        AWS_LOGSTREAM_WARN(CLIENT_CONFIG_TAG, "Retry Strategy will use the default max attempts.");
+        AWS_LOGSTREAM_DEBUG(CLIENT_CONFIG_TAG, "Retry Strategy will use the default max attempts.");
         return -1;
     }
     return maxAttempts;
