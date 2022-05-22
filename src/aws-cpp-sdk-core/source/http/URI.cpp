@@ -409,11 +409,10 @@ Aws::String URI::GetURIString(bool includeQueryString) const
         ss << ":" << m_port;
     }
 
-<<<<<<< HEAD:src/aws-cpp-sdk-core/source/http/URI.cpp
-    ss << GetURLEncodedPathRFC3986();
-=======
-    ss << GetURLEncodedPathRFC3986();
->>>>>>> dff5ff36d8a (Make http uri with non-empty path. ClickHouse/aws-sdk-cpp#5):aws-cpp-sdk-core/source/http/URI.cpp
+    if (!m_pathSegments.empty() || (includeQueryString && !m_queryString.empty()))
+    {
+        ss << GetURLEncodedPathRFC3986();
+    }
 
     if(includeQueryString)
     {
