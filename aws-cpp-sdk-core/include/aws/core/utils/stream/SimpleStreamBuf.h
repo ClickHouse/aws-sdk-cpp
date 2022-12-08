@@ -28,6 +28,7 @@ namespace Stream
 
             SimpleStreamBuf();
             explicit SimpleStreamBuf(const Aws::String& value);
+            SimpleStreamBuf(char * buffer, size_t capacity, size_t size);
 
             SimpleStreamBuf(const SimpleStreamBuf&) = delete;
             SimpleStreamBuf& operator=(const SimpleStreamBuf&) = delete;
@@ -57,6 +58,7 @@ namespace Stream
 
             char* m_buffer;
             size_t m_bufferSize;
+            bool externally_allocated = false;
     };
 
 }

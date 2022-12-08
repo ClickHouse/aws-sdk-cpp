@@ -29,6 +29,7 @@ class AWS_CORE_API SimpleStringStream : public std::iostream
 
         SimpleStringStream();
         SimpleStringStream(const Aws::String& value);
+        SimpleStringStream(char * buffer, size_t capacity, size_t size);
 
         virtual ~SimpleStringStream() {}
 
