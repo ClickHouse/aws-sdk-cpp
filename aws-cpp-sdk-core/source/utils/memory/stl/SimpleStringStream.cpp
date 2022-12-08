@@ -20,6 +20,12 @@ SimpleStringStream::SimpleStringStream(const Aws::String& value) :
 {
 }
 
+SimpleStringStream::SimpleStringStream(char * buffer, size_t capacity, size_t size) :
+    base(&m_streamBuffer),
+    m_streamBuffer(buffer, capacity, size)
+{
+}
+
 void SimpleStringStream::str(const Aws::String& value)
 {
     m_streamBuffer.str(value);

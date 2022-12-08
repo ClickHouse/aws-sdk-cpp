@@ -53,11 +53,27 @@ SimpleStreamBuf::SimpleStreamBuf(const Aws::String& value) :
     setg(begin, begin, begin);
 }
 
+SimpleStreamBuf::SimpleStreamBuf(char * buffer, size_t capacity, size_t size)
+{
+    m_buffer = buffer;
+    m_bufferSize = capacity;
+    externally_allocated = true;
+
+    char* begin = m_buffer;
+    char* end = begin + m_bufferSize;
+
+    setp(begin + size, end);
+    setg(begin, begin, begin); // + size);
+}
+
 SimpleStreamBuf::~SimpleStreamBuf()
 {
     if(m_buffer)
     {
-        Aws::DeleteArray<char>(m_buffer);
+        if (externally_allocated)
+            ::free(m_buffer);
+        else
+            Aws::DeleteArray<char>(m_buffer);
         m_buffer = nullptr;
     }
 
@@ -77,7 +93,7 @@ std::streampos SimpleStreamBuf::seekoff(std::streamoff off, std::ios_base::seekd
     else if (dir == std::ios_base::cur)
     {
         if(which == std::ios_base::in)
-        { 
+        {
             return seekpos((gptr() - m_buffer) + off, which);
         }
         else
@@ -100,7 +116,7 @@ std::streampos SimpleStreamBuf::seekpos(std::streampos pos, std::ios_base::openm
 
     if (which == std::ios_base::in)
     {
-        setg(m_buffer, m_buffer + static_cast<size_t>(pos), pptr());                    
+        setg(m_buffer, m_buffer + static_cast<size_t>(pos), pptr());
     }
 
     if (which == std::ios_base::out)
@@ -136,7 +152,10 @@ bool SimpleStreamBuf::GrowBuffer()
 
     if(m_buffer)
     {
-        Aws::DeleteArray<char>(m_buffer);
+        if (externally_allocated)
+            ::free(m_buffer);
+        else
+            Aws::DeleteArray<char>(m_buffer);
     }
 
     m_buffer = newBuffer;
