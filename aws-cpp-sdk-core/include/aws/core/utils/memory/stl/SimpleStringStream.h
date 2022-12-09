@@ -27,9 +27,12 @@ class AWS_CORE_API SimpleStringStream : public std::iostream
 
         using base = std::iostream;
 
+        using ExternalMemory = Aws::Utils::Stream::SimpleStreamBuf::ExternalMemory;
+        using ExternalMemoryPtr = Aws::Utils::Stream::SimpleStreamBuf::ExternalMemoryPtr;
+
         SimpleStringStream();
         SimpleStringStream(const Aws::String& value);
-        SimpleStringStream(char * buffer, size_t capacity, size_t size);
+        SimpleStringStream(ExternalMemoryPtr memory, size_t size);
 
         virtual ~SimpleStringStream() {}
 

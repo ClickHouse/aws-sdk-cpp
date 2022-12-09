@@ -20,6 +20,8 @@ namespace Stream
 static const uint32_t DEFAULT_BUFFER_SIZE = 100;
 static const char* SIMPLE_STREAMBUF_ALLOCATION_TAG = "SimpleStreamBufTag";
 
+SimpleStreamBuf::ExternalMemory::~ExternalMemory() = default;
+
 SimpleStreamBuf::SimpleStreamBuf() :
     m_buffer(nullptr),
     m_bufferSize(0)
@@ -52,25 +54,25 @@ SimpleStreamBuf::SimpleStreamBuf(const Aws::String& value) :
     setg(begin, begin, begin);
 }
 
-SimpleStreamBuf::SimpleStreamBuf(char * buffer, size_t capacity, size_t size)
+SimpleStreamBuf::SimpleStreamBuf(ExternalMemoryPtr memory, size_t size)
 {
-    m_buffer = buffer;
-    m_bufferSize = capacity;
-    externally_allocated = true;
+    external_memory = std::move(memory);
+    m_buffer = external_memory->data;
+    m_bufferSize = external_memory->size;
 
     char* begin = m_buffer;
     char* end = begin + m_bufferSize;
 
     setp(begin + size, end);
-    setg(begin, begin, begin); // + size);
+    setg(begin, begin, begin);
 }
 
 SimpleStreamBuf::~SimpleStreamBuf()
 {
     if(m_buffer)
     {
-        if (externally_allocated)
-            ::free(m_buffer);
+        if (external_memory)
+            external_memory.reset();
         else
             Aws::DeleteArray<char>(m_buffer);
         m_buffer = nullptr;
@@ -144,8 +146,8 @@ bool SimpleStreamBuf::GrowBuffer()
 
     if(m_buffer)
     {
-        if (externally_allocated)
-            ::free(m_buffer);
+        if (external_memory)
+            external_memory.reset();
         else
             Aws::DeleteArray<char>(m_buffer);
     }

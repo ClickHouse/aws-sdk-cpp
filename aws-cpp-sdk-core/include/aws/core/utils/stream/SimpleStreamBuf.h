@@ -26,9 +26,26 @@ namespace Stream
 
             using base = std::streambuf;
 
+            struct ExternalMemory
+            {
+                char * data = nullptr;
+                size_t size;
+
+                ExternalMemory() = default;
+                ExternalMemory(const ExternalMemory &) = delete;
+                ExternalMemory(ExternalMemory &&) = default;
+
+                ExternalMemory & operator=(const ExternalMemory &) = delete;
+                ExternalMemory & operator=(ExternalMemory &&) = default;
+
+                virtual ~ExternalMemory() = 0;
+            };
+
+            using ExternalMemoryPtr = std::unique_ptr<ExternalMemory>;
+
             SimpleStreamBuf();
             explicit SimpleStreamBuf(const Aws::String& value);
-            SimpleStreamBuf(char * buffer, size_t capacity, size_t size);
+            SimpleStreamBuf(ExternalMemoryPtr memory, size_t size);
 
             SimpleStreamBuf(const SimpleStreamBuf&) = delete;
             SimpleStreamBuf& operator=(const SimpleStreamBuf&) = delete;
@@ -58,7 +75,7 @@ namespace Stream
 
             char* m_buffer;
             size_t m_bufferSize;
-            bool externally_allocated = false;
+            ExternalMemoryPtr external_memory;
     };
 
 }

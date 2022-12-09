@@ -20,9 +20,9 @@ SimpleStringStream::SimpleStringStream(const Aws::String& value) :
 {
 }
 
-SimpleStringStream::SimpleStringStream(char * buffer, size_t capacity, size_t size) :
+SimpleStringStream::SimpleStringStream(ExternalMemoryPtr memory, size_t size) :
     base(&m_streamBuffer),
-    m_streamBuffer(buffer, capacity, size)
+    m_streamBuffer(std::move(memory), size)
 {
 }
 
