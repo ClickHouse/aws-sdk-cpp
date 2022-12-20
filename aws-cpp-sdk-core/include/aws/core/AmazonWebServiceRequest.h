@@ -47,7 +47,7 @@ namespace Aws
         /**
          * Get the payload for the request
          */
-        virtual std::shared_ptr<Aws::IOStream> GetBody() const = 0;
+        virtual std::shared_ptr<Aws::OtherStream> GetBody() const = 0;
         /**
          * Get the headers for the request
          */

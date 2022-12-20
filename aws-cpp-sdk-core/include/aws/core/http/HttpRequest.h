@@ -117,11 +117,11 @@ namespace Aws
             /**
              * Adds a content body stream to the request. This stream will be used to send the body to the endpoint.
              */
-            virtual void AddContentBody(const std::shared_ptr<Aws::IOStream>& strContent) = 0;
+            virtual void AddContentBody(const std::shared_ptr<Aws::OtherStream>& strContent) = 0;
             /**
              * Gets the content body stream that will be used for this request.
              */
-            virtual const std::shared_ptr<Aws::IOStream>& GetContentBody() const = 0;
+            virtual const std::shared_ptr<Aws::OtherStream>& GetContentBody() const = 0;
             /**
              * Returns true if a header exists in the request with name
              */

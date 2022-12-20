@@ -36,7 +36,7 @@ namespace Aws
                  * Get the value for a Header based on its name.
                  * This function doesn't check the existence of headerName.
                  * So make sure you call HasHeader() first before calling this function, otherwise the behavior is undefined.
-                 */                
+                 */
                 virtual const Aws::String& GetHeaderValue(const char* headerName) const override;
                 /**
                  * Add a header pair
@@ -50,14 +50,14 @@ namespace Aws
                  * delete pair by headerName
                  */
                 virtual void DeleteHeader(const char* headerName) override;
-                /**                 
+                /**
                  * Adds a content body stream to the request. This stream will be used to send the body to the endpoint.
-                 */               
-                virtual inline void AddContentBody(const std::shared_ptr<Aws::IOStream>& strContent) override { bodyStream = strContent; }
+                 */
+                virtual inline void AddContentBody(const std::shared_ptr<Aws::OtherStream>& strContent) override { bodyStream = strContent; }
                 /**
                  * Gets the content body stream that will be used for this request.
                  */
-                virtual inline const std::shared_ptr<Aws::IOStream>& GetContentBody() const override { return bodyStream; }
+                virtual inline const std::shared_ptr<Aws::OtherStream>& GetContentBody() const override { return bodyStream; }
                 /**
                  * Returns true if a header exists in the request with name
                  */
@@ -77,7 +77,7 @@ namespace Aws
 
             private:
                 HeaderValueCollection headerMap;
-                std::shared_ptr<Aws::IOStream> bodyStream;
+                std::shared_ptr<Aws::OtherStream> bodyStream;
                 Aws::IOStreamFactory m_responseStreamFactory;
             };
 

@@ -49,7 +49,7 @@ namespace Aws
         /**
          * Loads serialized payload into string buf and returns the stream
          */
-        std::shared_ptr<Aws::IOStream> GetBody() const override;
+        std::shared_ptr<Aws::OtherStream> GetBody() const override;
     };
 
 } // namespace Aws

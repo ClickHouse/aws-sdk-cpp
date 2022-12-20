@@ -37,11 +37,11 @@ namespace Aws
         /**
          * Get the user set stream
          */
-        inline std::shared_ptr<Aws::IOStream> GetBody() const override { return m_bodyStream; }
+        inline std::shared_ptr<Aws::OtherStream> GetBody() const override { return m_bodyStream; }
         /**
          * Set the body stream to use for the request.
          */
-        inline void SetBody(const std::shared_ptr<Aws::IOStream>& body) { m_bodyStream = body; }
+        inline void SetBody(const std::shared_ptr<Aws::OtherStream>& body) { m_bodyStream = body; }
         /**
          * Gets all headers that will be needed in the request. Calls GetRequestSpecificHeaders(), which is the chance for subclasses to add
          * headers from their modeled data.
@@ -75,7 +75,7 @@ namespace Aws
         virtual Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const { return Aws::Http::HeaderValueCollection(); };
 
     private:
-        std::shared_ptr<Aws::IOStream> m_bodyStream;
+        std::shared_ptr<Aws::OtherStream> m_bodyStream;
         Aws::String m_contentType;
     };
 

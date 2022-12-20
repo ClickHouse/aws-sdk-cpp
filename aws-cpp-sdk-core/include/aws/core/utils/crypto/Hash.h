@@ -45,6 +45,7 @@ namespace Aws
                  * Get the result in the current value
                  */
                 virtual HashResult GetHash() = 0;
+                HashResult Calculate(const Aws::OtherStream &);
 
                 // when hashing streams, this is the size of our internal buffer we read the stream into
                 static const uint32_t INTERNAL_HASH_STREAM_BUFFER_SIZE = 8192;

@@ -190,6 +190,8 @@ namespace Aws
                 m_ctx = nullptr;
             }
 
+            HashResult Hash::Calculate(const Aws::OtherStream& stream) { return {}; }
+
             HashResult MD5OpenSSLImpl::Calculate(const Aws::String& str)
             {
                 OpensslCtxRAIIGuard guard;

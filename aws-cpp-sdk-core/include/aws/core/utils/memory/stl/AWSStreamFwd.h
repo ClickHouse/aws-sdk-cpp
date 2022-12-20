@@ -8,6 +8,7 @@
 #include <aws/core/Core_EXPORTS.h>
 
 #include <iostream>
+#include <sstream>
 #include <functional>
 
 namespace Aws
@@ -21,6 +22,24 @@ typedef std::basic_istream< char, std::char_traits< char > > IStream;
 typedef std::basic_ostream< char, std::char_traits< char > > OStream;
 typedef std::basic_iostream< char, std::char_traits< char > > IOStream;
 typedef std::istreambuf_iterator< char, std::char_traits< char > > IStreamBufIterator;
+
+class SimpleStringStream;
+
+class OtherStream
+{
+public:
+    void clear() { ss.clear(); }
+    //void seekg(size_t) {}
+
+    void startReadingFromStart();
+
+    size_t getNumWrittenBytes();
+
+    void operator << (const std::string val) { ss << val; }
+
+    std::shared_ptr<SimpleStringStream> impl;
+    std::stringstream ss;
+};
 
 using IOStreamFactory = std::function< Aws::IOStream*(void) >;
 

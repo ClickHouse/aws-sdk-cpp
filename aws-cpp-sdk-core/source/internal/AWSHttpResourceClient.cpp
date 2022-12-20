@@ -487,13 +487,11 @@ namespace Aws
 
             httpRequest->SetUserAgent(ComputeUserAgentString());
 
-            std::shared_ptr<Aws::IOStream> body = Aws::MakeShared<Aws::StringStream>("STS_RESOURCE_CLIENT_LOG_TAG");
+            std::shared_ptr<Aws::OtherStream> body = Aws::MakeShared<Aws::OtherStream>("STS_RESOURCE_CLIENT_LOG_TAG");
             *body << ss.str();
 
             httpRequest->AddContentBody(body);
-            body->seekg(0, body->end);
-            auto streamSize = body->tellg();
-            body->seekg(0, body->beg);
+            auto streamSize = body->getNumWrittenBytes();
             Aws::StringStream contentLength;
             contentLength << streamSize;
             httpRequest->SetContentLength(contentLength.str());
