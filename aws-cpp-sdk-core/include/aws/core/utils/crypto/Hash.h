@@ -36,6 +36,8 @@ namespace Aws
                 */
                 virtual HashResult Calculate(Aws::IStream& stream) = 0;
 
+                HashResult Calculate(const Aws::OtherStream &);
+
                 // when hashing streams, this is the size of our internal buffer we read the stream into
                 static const uint32_t INTERNAL_HASH_STREAM_BUFFER_SIZE = 8192;
             };

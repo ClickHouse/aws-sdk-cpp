@@ -4,6 +4,7 @@
  */
 
 #include <aws/core/utils/memory/stl/SimpleStringStream.h>
+#include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 
 namespace Aws
 {
@@ -67,6 +68,28 @@ SimpleOStringStream::SimpleOStringStream(const Aws::String& value) :
 void SimpleOStringStream::str(const Aws::String& value)
 {
     m_streamBuffer.str(value);
+}
+
+void OtherStream::startReadingFromStart()
+{
+    if (impl)
+    {
+        impl->clear();
+        impl->seekg(0);
+    }
+    else
+    {
+        ss.clear();
+        ss.seekg(0);
+    }
+}
+
+size_t OtherStream::getNumWrittenBytes()
+{
+    if (impl)
+        return impl->tellp();
+    else
+        return ss.tellp();
 }
 
 } // namespace Aws

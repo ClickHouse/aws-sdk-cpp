@@ -8,14 +8,14 @@
 
 using namespace Aws;
 
-std::shared_ptr<Aws::IOStream> AmazonSerializableWebServiceRequest::GetBody() const
+std::shared_ptr<Aws::OtherStream> AmazonSerializableWebServiceRequest::GetBody() const
 {
     Aws::String&& payload = SerializePayload();
-    std::shared_ptr<Aws::IOStream> payloadBody;
+    std::shared_ptr<Aws::OtherStream> payloadBody;
 
     if (!payload.empty())
     {
-      payloadBody = Aws::MakeShared<Aws::StringStream>("AmazonSerializableWebServiceRequest");
+      payloadBody = Aws::MakeShared<Aws::OtherStream>("AmazonSerializableWebServiceRequest");
       *payloadBody << payload;
     }
 

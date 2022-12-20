@@ -44,6 +44,8 @@ namespace Aws
                 Sha256();
                 virtual ~Sha256();
 
+                using Hash::Calculate;
+
                 /**
                 * Calculates a SHA256 Hash digest (not hex encoded)
                 */

@@ -302,8 +302,7 @@ HttpResponseOutcome AWSClient::AttemptExhaustively(const Aws::Http::URI& uri,
         AWS_LOGSTREAM_WARN(AWS_CLIENT_LOG_TAG, "Request failed, now waiting " << sleepMillis << " ms before attempting again.");
         if(request.GetBody())
         {
-            request.GetBody()->clear();
-            request.GetBody()->seekg(0);
+            request.GetBody()->startReadingFromStart();
         }
 
         if (request.GetRequestRetryHandler())
@@ -604,7 +603,7 @@ void AWSClient::AddHeadersToRequest(const std::shared_ptr<Aws::Http::HttpRequest
 }
 
 void AWSClient::AddContentBodyToRequest(const std::shared_ptr<Aws::Http::HttpRequest>& httpRequest,
-    const std::shared_ptr<Aws::IOStream>& body, bool needsContentMd5, bool isChunked) const
+    const std::shared_ptr<Aws::OtherStream>& body, bool needsContentMd5, bool isChunked) const
 {
     httpRequest->AddContentBody(body);
 
@@ -640,9 +639,7 @@ void AWSClient::AddContentBodyToRequest(const std::shared_ptr<Aws::Http::HttpReq
                                                    "The request may fail if it's not a seekable stream.");
         }
         AWS_LOGSTREAM_TRACE(AWS_CLIENT_LOG_TAG, "Found body, but content-length has not been set, attempting to compute content-length");
-        body->seekg(0, body->end);
-        auto streamSize = body->tellg();
-        body->seekg(0, body->beg);
+        auto streamSize = body->getNumWrittenBytes();
         Aws::StringStream ss;
         ss << streamSize;
         httpRequest->SetContentLength(ss.str());

@@ -201,7 +201,7 @@ bool AWSAuthV4Signer::SignRequest(Aws::Http::HttpRequest& request, const char* r
             break;
     }
 
-    if(signBody || request.GetUri().GetScheme() != Http::Scheme::HTTPS)
+    if(signBody) // || request.GetUri().GetScheme() != Http::Scheme::HTTPS)
     {
         payloadHash = ComputePayloadHash(request);
         if (payloadHash.empty())
@@ -463,8 +463,7 @@ Aws::String AWSAuthV4Signer::ComputePayloadHash(Aws::Http::HttpRequest& request)
 
     if(request.GetContentBody())
     {
-        request.GetContentBody()->clear();
-        request.GetContentBody()->seekg(0);
+        request.GetContentBody()->startReadingFromStart();
     }
 
     if (!hashResult.IsSuccess())
