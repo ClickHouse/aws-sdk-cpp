@@ -295,6 +295,17 @@ void setLegacyClientConfigurationParameters(ClientConfiguration& clientConfig)
     ///         client->SetEndpoint(ec2MetadataServiceEndpoint);
     ///     }
     /// }
+    // Set the endpoint to interact with EC2 instance's metadata service
+    //Aws::String ec2MetadataServiceEndpoint = Aws::Environment::GetEnv("AWS_EC2_METADATA_SERVICE_ENDPOINT");
+    //if (! ec2MetadataServiceEndpoint.empty())
+    //{
+    //    //By default we use the IPv4 default metadata service address
+    //    auto client = Aws::Internal::GetEC2MetadataClient();
+    //    if (client != nullptr)
+    //    {
+    //        client->SetEndpoint(ec2MetadataServiceEndpoint);
+    //    }
+    //}
 }
 
 void setConfigFromEnvOrProfile(ClientConfiguration &config)

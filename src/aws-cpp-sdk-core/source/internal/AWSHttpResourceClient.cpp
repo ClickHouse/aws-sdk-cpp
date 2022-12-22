@@ -434,6 +434,10 @@ namespace Aws
 
         static Aws::String CalculateEC2MetadataServiceEndpoint()
         {
+            if (s_ec2metadataClient || (Aws::Utils::StringUtils::ToLower(Aws::Environment::GetEnv("AWS_EC2_METADATA_DISABLED").c_str()) == "true"))
+            {
+                return;
+            }
             Aws::String ec2MetadataServiceEndpoint = Aws::Environment::GetEnv("AWS_EC2_METADATA_SERVICE_ENDPOINT");
             if (ec2MetadataServiceEndpoint.empty())
             {
