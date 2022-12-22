@@ -250,35 +250,51 @@ void setLegacyClientConfigurationParameters(ClientConfiguration& clientConfig)
     clientConfig.region = calculateRegion();
     clientConfig.credentialProviderConfig.region = clientConfig.region;
 
-    // Set the endpoint to interact with EC2 instance's metadata service
-    Aws::String ec2MetadataServiceEndpoint = Aws::Environment::GetEnv("AWS_EC2_METADATA_SERVICE_ENDPOINT");
-    if (! ec2MetadataServiceEndpoint.empty())
-    {
-        //By default we use the IPv4 default metadata service address
-        auto client = Aws::Internal::GetEC2MetadataClient();
-        if (client != nullptr)
-        {
-          client->SetEndpoint(ec2MetadataServiceEndpoint);
-        }
-    }
+    /// Don't try to access EC2 metadata by default.
+    /// This is needed to allow to subclass `ClientConfiguration`
+    /// so that any possible SDK client will use extended configuration
+    /// without circular dependencies `Client` -> `ClientConfiguration` -> `Client`.
+    ///
+    /// // Set the endpoint to interact with EC2 instance's metadata service
 
-    clientConfig.appId = clientConfig.LoadConfigFromEnvOrProfile("AWS_SDK_UA_APP_ID", clientConfig.profileName, "sdk_ua_app_id", {}, "");
+    //Aws::String ec2MetadataServiceEndpoint = Aws::Environment::GetEnv("AWS_EC2_METADATA_SERVICE_ENDPOINT");
+    //if (! ec2MetadataServiceEndpoint.empty())
+    //{
+    //    //By default we use the IPv4 default metadata service address
+    //    auto client = Aws::Internal::GetEC2MetadataClient();
+    //    if (client != nullptr)
+    //    {
+    //      client->SetEndpoint(ec2MetadataServiceEndpoint);
+    //    }
+    //}
 
-    clientConfig.checksumConfig.requestChecksumCalculation =
-        LoadEnumFromString(REQUEST_CHECKSUM_CONFIG_MAPPING,
-                           ClientConfiguration::LoadConfigFromEnvOrProfile("AWS_REQUEST_CHECKSUM_CALCULATION", clientConfig.profileName,
-                                                                           "request_checksum_calculation",
-                                                                           {"when_supported", "when_required"}, "when_supported")
-                               .c_str(),
-                           RequestChecksumCalculation::WHEN_SUPPORTED);
+    //clientConfig.appId = clientConfig.LoadConfigFromEnvOrProfile("AWS_SDK_UA_APP_ID", clientConfig.profileName, "sdk_ua_app_id", {}, "");
 
-    clientConfig.checksumConfig.responseChecksumValidation =
-        LoadEnumFromString(RESPONSE_CHECKSUM_CONFIG_MAPPING,
-                           ClientConfiguration::LoadConfigFromEnvOrProfile("AWS_RESPONSE_CHECKSUM_VALIDATION", clientConfig.profileName,
-                                                                           "response_checksum_validation",
-                                                                           {"when_supported", "when_required"}, "when_supported")
-                               .c_str(),
-                           ResponseChecksumValidation::WHEN_SUPPORTED);
+    //clientConfig.checksumConfig.requestChecksumCalculation =
+    //    LoadEnumFromString(REQUEST_CHECKSUM_CONFIG_MAPPING,
+    //                       ClientConfiguration::LoadConfigFromEnvOrProfile("AWS_REQUEST_CHECKSUM_CALCULATION", clientConfig.profileName,
+    //                                                                       "request_checksum_calculation",
+    //                                                                       {"when_supported", "when_required"}, "when_supported")
+    //                           .c_str(),
+    //                       RequestChecksumCalculation::WHEN_SUPPORTED);
+
+    //clientConfig.checksumConfig.responseChecksumValidation =
+    //    LoadEnumFromString(RESPONSE_CHECKSUM_CONFIG_MAPPING,
+    //                       ClientConfiguration::LoadConfigFromEnvOrProfile("AWS_RESPONSE_CHECKSUM_VALIDATION", clientConfig.profileName,
+    //                                                                       "response_checksum_validation",
+    //                                                                       {"when_supported", "when_required"}, "when_supported")
+    //                           .c_str(),
+    //                       ResponseChecksumValidation::WHEN_SUPPORTED);
+    /// Aws::String ec2MetadataServiceEndpoint = Aws::Environment::GetEnv("AWS_EC2_METADATA_SERVICE_ENDPOINT");
+    /// if (! ec2MetadataServiceEndpoint.empty())
+    /// {
+    ///     //By default we use the IPv4 default metadata service address
+    ///     auto client = Aws::Internal::GetEC2MetadataClient();
+    ///     if (client != nullptr)
+    ///     {
+    ///         client->SetEndpoint(ec2MetadataServiceEndpoint);
+    ///     }
+    /// }
 }
 
 void setConfigFromEnvOrProfile(ClientConfiguration &config)
