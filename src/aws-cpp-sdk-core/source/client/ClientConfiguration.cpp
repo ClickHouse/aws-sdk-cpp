@@ -478,7 +478,33 @@ ClientConfiguration::ClientConfiguration(bool /*useSmartDefaults*/, const char* 
     }
 }
 
+<<<<<<< HEAD
 std::shared_ptr<RetryStrategy> InitRetryStrategy(int maxAttempts, Aws::String retryMode) {
+=======
+std::shared_ptr<RetryStrategy> InitRetryStrategy(Aws::String retryMode)
+{
+    int maxAttempts = 0;
+    Aws::String maxAttemptsString = Aws::Environment::GetEnv("AWS_MAX_ATTEMPTS");
+    if (maxAttemptsString.empty())
+    {
+        maxAttemptsString = Aws::Config::GetCachedConfigValue("max_attempts");
+    }
+    // In case users specify 0 explicitly to disable retry.
+    if (maxAttemptsString == "0")
+    {
+        maxAttempts = 0;
+    }
+    else
+    {
+        maxAttempts = static_cast<int>(Aws::Utils::StringUtils::ConvertToInt32(maxAttemptsString.c_str()));
+        if (maxAttempts == 0)
+        {
+            AWS_LOGSTREAM_DEBUG(CLIENT_CONFIG_TAG, "Retry Strategy will use the default max attempts.");
+            maxAttempts = -1;
+        }
+    }
+
+>>>>>>> aff9a9aa3d1 (Merge branch 'master' into update-to-1.10.36)
     if (retryMode.empty())
     {
         retryMode = Aws::Environment::GetEnv("AWS_RETRY_MODE");
