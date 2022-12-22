@@ -24,6 +24,8 @@ bool CompleteMultipartUploadRequest::HasEmbeddedError(Aws::IOStream &body,
   // Header is unused
   AWS_UNREFERENCED_PARAM(header);
 
+#ifndef NDEBUG
+  auto streamState = body.exceptions();
   auto readPointer = body.tellg();
   Utils::Xml::XmlDocument doc = XmlDocument::CreateFromXmlStream(body);
   body.seekg(readPointer);
@@ -32,8 +34,13 @@ bool CompleteMultipartUploadRequest::HasEmbeddedError(Aws::IOStream &body,
   }
 
   if (!doc.GetRootElement().IsNull() && doc.GetRootElement().GetName() == Aws::String("Error")) {
-    return true;
+    /// Must not be here because earlier we already checked for an embedded error in PocoHTTPClient (see checkRequestCanReturn2xxAndErrorInBody).
+    AWS_FATAL_ASSERT(false);
   }
+  body.seekg(readPointer);
+  AWS_FATAL_ASSERT(body.exceptions() == streamState);
+#endif
+
   return false;
 }
 
