@@ -415,7 +415,7 @@ Aws::String URI::GetURIString(bool includeQueryString) const
         ss << ":" << m_port;
     }
 
-    if (!m_pathSegments.empty())
+    if (!m_pathSegments.empty() || (includeQueryString && !m_queryString.empty()))
     {
         ss << GetURLEncodedPathRFC3986();
     }
