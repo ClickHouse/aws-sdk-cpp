@@ -305,6 +305,12 @@ void setLegacyClientConfigurationParameters(ClientConfiguration& clientConfig)
     //                                                                       {"when_supported", "when_required"}, "when_supported")
     //                           .c_str(),
     //                       ResponseChecksumValidation::WHEN_SUPPORTED);
+    /// Don't try to access EC2 metadata by default.
+    /// This is needed to allow to subclass `ClientConfiguration`
+    /// so that any possible SDK client will use extended configuration
+    /// without circular dependencies `Client` -> `ClientConfiguration` -> `Client`.
+    ///
+    /// // Set the endpoint to interact with EC2 instance's metadata service
     /// Aws::String ec2MetadataServiceEndpoint = Aws::Environment::GetEnv("AWS_EC2_METADATA_SERVICE_ENDPOINT");
     /// if (! ec2MetadataServiceEndpoint.empty())
     /// {
@@ -315,99 +321,6 @@ void setLegacyClientConfigurationParameters(ClientConfiguration& clientConfig)
     ///         client->SetEndpoint(ec2MetadataServiceEndpoint);
     ///     }
     /// }
-    // Set the endpoint to interact with EC2 instance's metadata service
-    //Aws::String ec2MetadataServiceEndpoint = Aws::Environment::GetEnv("AWS_EC2_METADATA_SERVICE_ENDPOINT");
-    //if (! ec2MetadataServiceEndpoint.empty())
-    //{
-    //    //By default we use the IPv4 default metadata service address
-    //    auto client = Aws::Internal::GetEC2MetadataClient();
-    //    if (client != nullptr)
-    //    {
-    //        client->SetEndpoint(ec2MetadataServiceEndpoint);
-    //    }
-    //}
-}
-
-void setConfigFromEnvOrProfile(ClientConfiguration &config)
-{
-    Aws::String disableIMDSv1 = ClientConfiguration::LoadConfigFromEnvOrProfile(DISABLE_IMDSV1_ENV_VAR,
-        config.profileName,
-        DISABLE_IMDSV1_CONFIG_VAR,
-        {"true", "false"},
-        "false");
-    if (disableIMDSv1 == "true") {
-        config.disableImdsV1 = true;
-        config.credentialProviderConfig.imdsConfig.disableImdsV1 = true;
-    }
-
-    // accountId is intentionally not set here: AWS_ACCOUNT_ID env variable may not match the provided credentials.
-    // it must be set by an auth provider / identity resolver or by an SDK user.
-    config.accountIdEndpointMode = ClientConfiguration::LoadConfigFromEnvOrProfile(AWS_ACCOUNT_ID_ENDPOINT_MODE_ENVIRONMENT_VARIABLE,
-        config.profileName,
-        AWS_ACCOUNT_ID_ENDPOINT_MODE_CONFIG_FILE_OPTION,
-        {"required", "disabled", "preferred"}, /* allowed values */
-        "preferred" /* default value */);
-    
-    // Load IMDS configuration from environment variables and config file
-    Aws::String timeoutStr = ClientConfiguration::LoadConfigFromEnvOrProfile(AWS_METADATA_SERVICE_TIMEOUT_ENV_VAR,
-        config.profileName,
-        AWS_METADATA_SERVICE_TIMEOUT_CONFIG_VAR,
-        {}, /* allowed values */
-        "1" /* default value */);
-
-    // Load IMDS configuration from environment variables and config file
-    Aws::String numAttemptsStr = ClientConfiguration::LoadConfigFromEnvOrProfile(AWS_METADATA_SERVICE_NUM_ATTEMPTS_ENV_VAR,
-        config.profileName,
-        AWS_METADATA_SERVICE_NUM_ATTEMPTS_CONFIG_VAR,
-        {}, /* allowed values */
-        "1" /* default value */);
-
-    // Parse and set IMDS timeout
-    long timeout = static_cast<long>(Aws::Utils::StringUtils::ConvertToInt32(timeoutStr.c_str()));
-    config.credentialProviderConfig.imdsConfig.metadataServiceTimeout = timeout;
-
-    // Parse and set IMDS num attempts
-    long attempts = static_cast<long>(Aws::Utils::StringUtils::ConvertToInt32(numAttemptsStr.c_str()));
-    config.credentialProviderConfig.imdsConfig.metadataServiceNumAttempts = attempts;
-
-    // Initialize IMDS-specific retry strategy with configured number of attempts
-    // Uses default retry mode with the specified max attempts from metadata_service_num_attempts
-    config.credentialProviderConfig.imdsConfig.imdsRetryStrategy = InitRetryStrategy(attempts, "");
-
-    config.credentialProviderConfig.stsCredentialsProviderConfig.roleArn = ClientConfiguration::LoadConfigFromEnvOrProfileCaseSensitive(
-        AWS_IAM_ROLE_ARN_ENV_VAR_COMPAT, config.profileName, AWS_IAM_ROLE_ARN_CONFIG_FILE_OPTION, {}, /* allowed values */
-        "" /* default value */, [](const Aws::String& envValue) -> Aws::String { return envValue; });
-
-    // there was a typo in the original environment variable, this exists for backwards compatibility
-    if (config.credentialProviderConfig.stsCredentialsProviderConfig.roleArn.empty()) {
-      config.credentialProviderConfig.stsCredentialsProviderConfig.roleArn = ClientConfiguration::LoadConfigFromEnvOrProfileCaseSensitive(
-          AWS_IAM_ROLE_ARN_ENV_VAR, config.profileName, AWS_IAM_ROLE_ARN_CONFIG_FILE_OPTION, {}, /* allowed values */
-          "" /* default value */, [](const Aws::String& envValue) -> Aws::String { return envValue; });
-    }
-
-    config.credentialProviderConfig.stsCredentialsProviderConfig.sessionName = ClientConfiguration::LoadConfigFromEnvOrProfileCaseSensitive(
-        AWS_IAM_ROLE_SESSION_NAME_ENV_VAR_COMPAT, config.profileName, AWS_IAM_ROLE_SESSION_NAME_CONFIG_FILE_OPTION, {}, /* allowed values */
-        "" /* default value */, [](const Aws::String& envValue) -> Aws::String { return envValue; });
-
-    // there was a typo in the original environment variable, this exists for backwards compatibility
-    if (config.credentialProviderConfig.stsCredentialsProviderConfig.sessionName.empty()) {
-      config.credentialProviderConfig.stsCredentialsProviderConfig.sessionName =
-          ClientConfiguration::LoadConfigFromEnvOrProfileCaseSensitive(
-              AWS_IAM_ROLE_SESSION_NAME_ENV_VAR, config.profileName, AWS_IAM_ROLE_SESSION_NAME_CONFIG_FILE_OPTION, {}, /* allowed values */
-              "" /* default value */, [](const Aws::String& envValue) -> Aws::String { return envValue; });
-    }
-
-    config.credentialProviderConfig.stsCredentialsProviderConfig.tokenFilePath =
-        ClientConfiguration::LoadConfigFromEnvOrProfileCaseSensitive(
-            AWS_WEB_IDENTITY_TOKEN_FILE_ENV_VAR, config.profileName, AWS_WEB_IDENTITY_TOKEN_FILE_CONFIG_FILE_OPTION,
-            {}, /* allowed values */
-            "" /* default value */, [](const Aws::String& envValue) -> Aws::String { return envValue; });
-
-    config.credentialProviderConfig.loginCredentialProviderConfig.loginSession =
-        Aws::Config::GetCachedConfigValue(config.profileName, AWS_LOGIN_SESSION_FILE_OPTION);
-
-    config.credentialProviderConfig.loginCredentialProviderConfig.loginCacheOverride =
-        Aws::Environment::GetEnv(AWS_LOGIN_CACHE_DIRECTORY_ENV_VAR);
 }
 
 ClientConfiguration::ClientConfiguration()
