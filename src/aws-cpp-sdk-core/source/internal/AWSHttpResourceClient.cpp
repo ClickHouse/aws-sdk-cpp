@@ -439,7 +439,11 @@ namespace Aws
 
         static Aws::String CalculateEC2MetadataServiceEndpoint()
         {
-            if (s_ec2metadataClient || (Aws::Utils::StringUtils::ToLower(Aws::Environment::GetEnv("AWS_EC2_METADATA_DISABLED").c_str()) == "true"))
+            /// In ClickHouse we load EC2 metadata by ourselves - see DB::S3::ClientFactory::create() in src/IO/S3Common.cpp.
+            /// We have to do that because we need PocoHTTPClientConfiguration (not just Aws::Client::ClientConfiguration) to download things in ClickHouse.
+            /// Here we just disable loading EC2 metadata by aws-sdk-core.
+            #if 0
+            if (s_ec2metadataClient)
             {
                 return;
             }
