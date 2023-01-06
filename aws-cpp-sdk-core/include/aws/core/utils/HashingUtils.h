@@ -56,6 +56,7 @@ namespace Aws
             * Calculates a SHA256 Hash digest on a stream (the entire stream is read, not hex encoded.)
             */
             static ByteBuffer CalculateSHA256(Aws::IOStream& stream);
+            static ByteBuffer CalculateSHA256(Aws::OtherStream & stream);
 
             /**
             * Calculates a SHA256 Tree Hash digest (not hex encoded, see tree hash definition: http://docs.aws.amazon.com/amazonglacier/latest/dev/checksum-calculations.html)
@@ -66,6 +67,7 @@ namespace Aws
             * Calculates a SHA256 Tree Hash digest on a stream (the entire stream is read, not hex encoded.)
             */
             static ByteBuffer CalculateSHA256TreeHash(Aws::IOStream& stream);
+            static ByteBuffer CalculateSHA256TreeHash(Aws::OtherStream& stream);
 
             /**
             * Calculates a SHA1 Hash digest (not hex encoded)
@@ -76,6 +78,7 @@ namespace Aws
             * Calculates a SHA1 Hash digest on a stream (the entire stream is read, not hex encoded.)
             */
             static ByteBuffer CalculateSHA1(Aws::IOStream& stream);
+            static ByteBuffer CalculateSHA1(Aws::OtherStream& stream);
 
             /**
             * Calculates a MD5 Hash value
@@ -86,6 +89,7 @@ namespace Aws
             * Calculates a MD5 Hash value
             */
             static ByteBuffer CalculateMD5(Aws::IOStream& stream);
+            static ByteBuffer CalculateMD5(Aws::OtherStream& stream);
 
             /**
              * Calculates a CRC32 Hash value
@@ -96,6 +100,7 @@ namespace Aws
              * Calculates a CRC32 Hash value
              */
             static ByteBuffer CalculateCRC32(Aws::IOStream& stream);
+            static ByteBuffer CalculateCRC32(Aws::OtherStream& stream);
 
             /**
              * Calculates a CRC32C Hash value
@@ -106,6 +111,7 @@ namespace Aws
              * Calculates a CRC32C Hash value
              */
             static ByteBuffer CalculateCRC32C(Aws::IOStream& stream);
+            static ByteBuffer CalculateCRC32C(Aws::OtherStream& stream);
 
             static int HashString(const char* strToHash);
 

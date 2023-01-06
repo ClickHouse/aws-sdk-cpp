@@ -328,7 +328,7 @@ namespace Aws
             void AddContentBodyToRequest(const std::shared_ptr<Aws::Http::HttpRequest>& httpRequest, const std::shared_ptr<Aws::OtherStream>& body,
                                          bool needsContentMd5 = false, bool isChunked = false) const;
             void AddCommonHeaders(Aws::Http::HttpRequest& httpRequest) const;
-            std::shared_ptr<Aws::IOStream> GetBodyStream(const Aws::AmazonWebServiceRequest& request) const;
+            std::shared_ptr<Aws::OtherStream> GetBodyStream(const Aws::AmazonWebServiceRequest& request) const;
 
             std::shared_ptr<Aws::Http::HttpClient> m_httpClient;
             std::shared_ptr<Aws::Auth::AWSAuthSignerProvider> m_signerProvider;

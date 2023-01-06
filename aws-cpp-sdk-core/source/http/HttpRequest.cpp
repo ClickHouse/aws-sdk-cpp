@@ -46,10 +46,10 @@ namespace Aws
         std::shared_ptr<Aws::Crt::Http::HttpRequest> HttpRequest::ToCrtHttpRequest()
         {
             auto request = Aws::MakeShared<Aws::Crt::Http::HttpRequest>(ALLOCATION_TAG);
-            request->SetBody([&]() -> std::shared_ptr<IOStream> {
-                const std::shared_ptr<Aws::IOStream>& body = GetContentBody();
+            request->SetBody([&]() -> std::shared_ptr<Aws::Crt::Io::IStream> {
+                const std::shared_ptr<Aws::OtherStream>& body = GetContentBody();
                 if (body) {
-                  return body;
+                    return body->toStream();
                 }
                 // Return an empty string stream for no body
                 return Aws::MakeShared<Aws::StringStream>(ALLOCATION_TAG, "");

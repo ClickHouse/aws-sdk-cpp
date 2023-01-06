@@ -55,6 +55,7 @@ ByteBuffer HashingUtils::CalculateSHA256(Aws::IOStream& stream)
     Sha256 hash;
     return hash.Calculate(stream).GetResult();
 }
+ByteBuffer HashingUtils::CalculateSHA256(Aws::OtherStream& stream) { throw std::runtime_error("not implemented"); }
 
 /**
  * This function is only used by HashingUtils::CalculateSHA256TreeHash() in this cpp file
@@ -139,6 +140,9 @@ ByteBuffer HashingUtils::CalculateSHA256TreeHash(Aws::IOStream& stream)
     return TreeHashFinalCompute(input);
 }
 
+
+ByteBuffer HashingUtils::CalculateSHA256TreeHash(Aws::OtherStream & stream) { throw std::runtime_error("not implemented"); }
+
 Aws::String HashingUtils::HexEncode(const ByteBuffer& message)
 {
     Aws::String encoded;
@@ -222,6 +226,7 @@ ByteBuffer HashingUtils::CalculateSHA1(Aws::IOStream& stream)
     Sha1 hash;
     return hash.Calculate(stream).GetResult();
 }
+ByteBuffer HashingUtils::CalculateSHA1(Aws::OtherStream& stream) { throw std::runtime_error("not implemented"); }
 
 ByteBuffer HashingUtils::CalculateMD5(const Aws::String& str)
 {
@@ -235,6 +240,8 @@ ByteBuffer HashingUtils::CalculateMD5(Aws::IOStream& stream)
     return hash.Calculate(stream).GetResult();
 }
 
+ByteBuffer HashingUtils::CalculateMD5(Aws::OtherStream& stream) { throw std::runtime_error("not implemented"); }
+
 ByteBuffer HashingUtils::CalculateCRC32(const Aws::String& str)
 {
     CRC32 hash;
@@ -247,6 +254,8 @@ ByteBuffer HashingUtils::CalculateCRC32(Aws::IOStream& stream)
     return hash.Calculate(stream).GetResult();
 }
 
+ByteBuffer HashingUtils::CalculateCRC32(Aws::OtherStream& stream) { throw std::runtime_error("not implemented"); }
+
 ByteBuffer HashingUtils::CalculateCRC32C(const Aws::String& str)
 {
     CRC32C hash;
@@ -258,6 +267,8 @@ ByteBuffer HashingUtils::CalculateCRC32C(Aws::IOStream& stream)
     CRC32C hash;
     return hash.Calculate(stream).GetResult();
 }
+
+ByteBuffer HashingUtils::CalculateCRC32C(Aws::OtherStream& stream) { throw std::runtime_error("not implemented"); }
 
 int HashingUtils::HashString(const char* strToHash)
 {

@@ -84,6 +84,14 @@ void OtherStream::startReadingFromStart()
     }
 }
 
+std::shared_ptr<std::basic_istream<char, std::char_traits<char>>> OtherStream::toStream()
+{
+    if (impl)
+        throw std::runtime_error("cannot convert to std::basic_istream");
+
+    return std::make_shared<std::stringstream>(std::move(ss));
+}
+
 size_t OtherStream::getNumWrittenBytes()
 {
     if (impl)

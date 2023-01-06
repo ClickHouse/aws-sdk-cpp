@@ -986,12 +986,12 @@ Aws::String AWSClient::GeneratePresignedUrl(const Aws::AmazonWebServiceRequest& 
     return AWSUrlPresigner(*this).GeneratePresignedUrl(request, uri, method, extraParams, expirationInSeconds);
 }
 
-std::shared_ptr<Aws::IOStream> AWSClient::GetBodyStream(const Aws::AmazonWebServiceRequest& request) const {
+std::shared_ptr<Aws::OtherStream> AWSClient::GetBodyStream(const Aws::AmazonWebServiceRequest& request) const {
     if (request.GetBody() != nullptr) {
         return request.GetBody();
     }
     // Return an empty string stream for no body
-    return Aws::MakeShared<Aws::StringStream>(AWS_CLIENT_LOG_TAG, "");
+    return Aws::MakeShared<Aws::OtherStream>(AWS_CLIENT_LOG_TAG);
 }
 
 std::shared_ptr<Aws::Http::HttpResponse> AWSClient::MakeHttpRequest(std::shared_ptr<Aws::Http::HttpRequest>& request) const

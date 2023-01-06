@@ -650,7 +650,7 @@ namespace Aws
                 requestDoc.WithString("refreshToken", request.refreshToken);
             }
 
-            std::shared_ptr<Aws::IOStream> body = Aws::MakeShared<Aws::StringStream>("SSO_BEARER_TOKEN_CREATE_TOKEN");
+            std::shared_ptr<Aws::OtherStream> body = Aws::MakeShared<Aws::OtherStream>("SSO_BEARER_TOKEN_CREATE_TOKEN");
             if(!body) {
                 AWS_LOGSTREAM_FATAL(SSO_RESOURCE_CLIENT_LOG_TAG, "Failed to allocate body");  // exceptions disabled
                 return result;
@@ -658,9 +658,7 @@ namespace Aws
             *body << requestDoc.View().WriteReadable();;
 
             httpRequest->AddContentBody(body);
-            body->seekg(0, body->end);
-            auto streamSize = body->tellg();
-            body->seekg(0, body->beg);
+            auto streamSize = body->getNumWrittenBytes();
             Aws::StringStream contentLength;
             contentLength << streamSize;
             httpRequest->SetContentLength(contentLength.str());

@@ -32,6 +32,7 @@ public:
     //void seekg(size_t) {}
 
     void startReadingFromStart();
+    std::shared_ptr<std::basic_istream<char, std::char_traits<char>>> toStream();
 
     size_t getNumWrittenBytes();
 

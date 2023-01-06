@@ -509,8 +509,7 @@ Aws::String AWSAuthV4Signer::ComputePayloadHash(Aws::Http::HttpRequest& request)
 
     if(request.GetContentBody())
     {
-        request.GetContentBody()->clear();
-        request.GetContentBody()->seekg(0);
+        request.GetContentBody()->startReadingFromStart();
     }
 
     if (!hashResult.IsSuccess())
