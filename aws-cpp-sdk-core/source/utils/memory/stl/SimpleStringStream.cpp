@@ -84,7 +84,7 @@ void OtherStream::startReadingFromStart()
     }
 }
 
-std::shared_ptr<std::basic_istream<char, std::char_traits<char>>> OtherStream::toStream()
+std::shared_ptr<std::basic_iostream<char, std::char_traits<char>>> OtherStream::toStream()
 {
     if (impl)
         throw std::runtime_error("cannot convert to std::basic_istream");

@@ -55,7 +55,7 @@ ByteBuffer HashingUtils::CalculateSHA256(Aws::IOStream& stream)
     Sha256 hash;
     return hash.Calculate(stream).GetResult();
 }
-ByteBuffer HashingUtils::CalculateSHA256(Aws::OtherStream& stream) { throw std::runtime_error("not implemented"); }
+ByteBuffer HashingUtils::CalculateSHA256(Aws::OtherStream& stream) { return CalculateSHA256(*stream.toStream()); }
 
 /**
  * This function is only used by HashingUtils::CalculateSHA256TreeHash() in this cpp file
@@ -141,7 +141,7 @@ ByteBuffer HashingUtils::CalculateSHA256TreeHash(Aws::IOStream& stream)
 }
 
 
-ByteBuffer HashingUtils::CalculateSHA256TreeHash(Aws::OtherStream & stream) { throw std::runtime_error("not implemented"); }
+ByteBuffer HashingUtils::CalculateSHA256TreeHash(Aws::OtherStream & stream) { return CalculateSHA256TreeHash(*stream.toStream()); }
 
 Aws::String HashingUtils::HexEncode(const ByteBuffer& message)
 {
@@ -226,7 +226,7 @@ ByteBuffer HashingUtils::CalculateSHA1(Aws::IOStream& stream)
     Sha1 hash;
     return hash.Calculate(stream).GetResult();
 }
-ByteBuffer HashingUtils::CalculateSHA1(Aws::OtherStream& stream) { throw std::runtime_error("not implemented"); }
+ByteBuffer HashingUtils::CalculateSHA1(Aws::OtherStream& stream) { return CalculateSHA1(*stream.toStream()); }
 
 ByteBuffer HashingUtils::CalculateMD5(const Aws::String& str)
 {
@@ -240,7 +240,7 @@ ByteBuffer HashingUtils::CalculateMD5(Aws::IOStream& stream)
     return hash.Calculate(stream).GetResult();
 }
 
-ByteBuffer HashingUtils::CalculateMD5(Aws::OtherStream& stream) { throw std::runtime_error("not implemented"); }
+ByteBuffer HashingUtils::CalculateMD5(Aws::OtherStream& stream) { return CalculateMD5(*stream.toStream()); }
 
 ByteBuffer HashingUtils::CalculateCRC32(const Aws::String& str)
 {
@@ -254,7 +254,7 @@ ByteBuffer HashingUtils::CalculateCRC32(Aws::IOStream& stream)
     return hash.Calculate(stream).GetResult();
 }
 
-ByteBuffer HashingUtils::CalculateCRC32(Aws::OtherStream& stream) { throw std::runtime_error("not implemented"); }
+ByteBuffer HashingUtils::CalculateCRC32(Aws::OtherStream& stream) { return CalculateCRC32(*stream.toStream()); }
 
 ByteBuffer HashingUtils::CalculateCRC32C(const Aws::String& str)
 {
@@ -268,7 +268,7 @@ ByteBuffer HashingUtils::CalculateCRC32C(Aws::IOStream& stream)
     return hash.Calculate(stream).GetResult();
 }
 
-ByteBuffer HashingUtils::CalculateCRC32C(Aws::OtherStream& stream) { throw std::runtime_error("not implemented"); }
+ByteBuffer HashingUtils::CalculateCRC32C(Aws::OtherStream& stream) { return CalculateCRC32C(*stream.toStream()); }
 
 int HashingUtils::HashString(const char* strToHash)
 {

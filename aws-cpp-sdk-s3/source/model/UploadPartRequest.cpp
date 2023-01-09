@@ -17,7 +17,7 @@ using namespace Aws::Utils;
 using namespace Aws::Http;
 using namespace Aws;
 
-UploadPartRequest::UploadPartRequest() : 
+UploadPartRequest::UploadPartRequest() :
     m_bucketHasBeenSet(false),
     m_contentLength(0),
     m_contentLengthHasBeenSet(false),
@@ -181,7 +181,7 @@ Aws::String UploadPartRequest::GetChecksumAlgorithmName() const
 {
   if (m_checksumAlgorithm == ChecksumAlgorithm::NOT_SET)
   {
-    return "md5";
+    return {};
   }
   else
   {

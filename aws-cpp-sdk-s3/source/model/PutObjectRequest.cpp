@@ -17,7 +17,7 @@ using namespace Aws::Utils;
 using namespace Aws::Http;
 using namespace Aws;
 
-PutObjectRequest::PutObjectRequest() : 
+PutObjectRequest::PutObjectRequest() :
     m_aCL(ObjectCannedACL::NOT_SET),
     m_aCLHasBeenSet(false),
     m_bucketHasBeenSet(false),
@@ -327,7 +327,7 @@ Aws::String PutObjectRequest::GetChecksumAlgorithmName() const
 {
   if (m_checksumAlgorithm == ChecksumAlgorithm::NOT_SET)
   {
-    return "md5";
+    return {};
   }
   else
   {

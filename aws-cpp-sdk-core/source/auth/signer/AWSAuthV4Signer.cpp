@@ -228,7 +228,7 @@ bool AWSAuthV4Signer::SignRequest(Aws::Http::HttpRequest& request, const char* r
         request.SetAwsSessionToken(credentials.GetSessionToken());
     }
 
-    if(signBody || request.GetUri().GetScheme() != Http::Scheme::HTTPS)
+    if(signBody) // || request.GetUri().GetScheme() != Http::Scheme::HTTPS)
     {
         payloadHash = ComputePayloadHash(request);
         if (payloadHash.empty())
