@@ -43,16 +43,12 @@ namespace Model
 
 
     /**
-     * <p>Specifies whether the object retrieved was (<code>true</code>) or was not
-     * (<code>false</code>) a delete marker. If <code>false</code>, this response
-     * header does not appear in the response.</p>
+     * <p>Region of the bucket. If it's any empty string, this response header does not appear in the response.</p>
      */
     inline std::string GetRegion() const{ return m_region; }
 
     /**
-     * <p>Specifies whether the object retrieved was (<code>true</code>) or was not
-     * (<code>false</code>) a delete marker. If <code>false</code>, this response
-     * header does not appear in the response.</p>
+     * <p>Set region for the bucket.</p>
      */
     inline void SetRegion(std::string value) { m_region = value; }
 
