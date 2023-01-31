@@ -5,21 +5,12 @@
 
 #include <aws/s3/model/HeadBucketResult.h>
 #include <aws/core/AmazonWebServiceResult.h>
-#include <aws/core/utils/StringUtils.h>
-#include <aws/core/utils/HashingUtils.h>
-#include <aws/core/utils/memory/stl/AWSStringStream.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 
 #include <utility>
 
 using namespace Aws::S3::Model;
-using namespace Aws::Utils::Stream;
-using namespace Aws::Utils;
 using namespace Aws;
-
-HeadBucketResult::HeadBucketResult()
-{
-}
 
 HeadBucketResult::HeadBucketResult(const Aws::AmazonWebServiceResult<Utils::Xml::XmlDocument>& result)
 {
