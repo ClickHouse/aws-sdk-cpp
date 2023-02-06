@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * SPDX-License-Identifier: Apache-2.0.
  */
@@ -16,7 +16,12 @@ using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
 using namespace Aws;
 
-HeadBucketResult::HeadBucketResult(const Aws::AmazonWebServiceResult<XmlDocument>& result) { *this = result; }
+HeadBucketResult::HeadBucketResult(const Aws::AmazonWebServiceResult<XmlDocument>& result) :
+    m_bucketLocationType(LocationType::NOT_SET),
+    m_accessPointAlias(false)
+{
+  *this = result;
+}
 
 HeadBucketResult& HeadBucketResult::operator=(const Aws::AmazonWebServiceResult<XmlDocument>& result) {
   m_HttpResponseCode = result.GetResponseCode();
@@ -61,6 +66,12 @@ HeadBucketResult& HeadBucketResult::operator=(const Aws::AmazonWebServiceResult<
   if (requestIdIter != headers.end()) {
     m_requestId = requestIdIter->second;
     m_requestIdHasBeenSet = true;
+  }
+
+  const auto& regionIter = headers.find("x-amz-bucket-region");
+  if (regionIter != headers.end()) {
+    m_region = regionIter->second;
+    m_regionHasBeenSet = true;
   }
 
   return *this;
