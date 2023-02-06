@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * SPDX-License-Identifier: Apache-2.0.
  */
@@ -98,12 +98,44 @@ namespace Model
 
     ///@{
     
+<<<<<<< HEAD
     inline const Aws::String& GetRequestId() const { return m_requestId; }
     template<typename RequestIdT = Aws::String>
     void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
     template<typename RequestIdT = Aws::String>
     HeadBucketResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
     ///@}
+=======
+    inline const Aws::String& GetRequestId() const{ return m_requestId; }
+
+    
+    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
+
+    
+    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
+
+    
+    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
+
+    
+    inline HeadBucketResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
+
+    
+    inline HeadBucketResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
+
+    
+    inline HeadBucketResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
+
+    /**
+     * <p>Region of the bucket. If it's any empty string, this response header does not appear in the response.</p>
+     */
+    inline const Aws::String & GetRegion() const{ return m_region; }
+
+    /**
+     * <p>Set region for the bucket.</p>
+     */
+    inline void SetRegion(Aws::String value) { m_region = std::move(value); }
+
   private:
 
     Aws::String m_bucketArn;
@@ -123,6 +155,8 @@ namespace Model
 
     Aws::String m_requestId;
     bool m_requestIdHasBeenSet = false;
+
+    Aws::String m_region;
   };
 
 } // namespace Model
