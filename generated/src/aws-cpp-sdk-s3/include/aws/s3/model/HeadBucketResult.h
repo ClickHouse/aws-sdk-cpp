@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * SPDX-License-Identifier: Apache-2.0.
  */
@@ -122,7 +122,6 @@ class HeadBucketResult {
   ///@}
 
   ///@{
-
   inline const Aws::String& GetRequestId() const { return m_requestId; }
   template <typename RequestIdT = Aws::String>
   void SetRequestId(RequestIdT&& value) {
@@ -132,6 +131,23 @@ class HeadBucketResult {
   template <typename RequestIdT = Aws::String>
   HeadBucketResult& WithRequestId(RequestIdT&& value) {
     SetRequestId(std::forward<RequestIdT>(value));
+    return *this;
+  }
+  ///@}
+
+  ///@{
+  /**
+   * <p>Region of the bucket. If it's any empty string, this response header does not appear in the response.</p>
+   */
+  inline const Aws::String& GetRegion() const { return m_region; }
+  template <typename RegionT = Aws::String>
+  void SetRegion(RegionT&& value) {
+    m_regionHasBeenSet = true;
+    m_region = std::forward<RegionT>(value);
+  }
+  template <typename RegionT = Aws::String>
+  HeadBucketResult& WithRegion(RegionT&& value) {
+    SetRegion(std::forward<RegionT>(value));
     return *this;
   }
   ///@}
@@ -156,6 +172,8 @@ class HeadBucketResult {
   bool m_bucketRegionHasBeenSet = false;
   bool m_accessPointAliasHasBeenSet = false;
   bool m_requestIdHasBeenSet = false;
+  Aws::String m_region;
+  bool m_regionHasBeenSet = false;
 };
 
 }  // namespace Model
