@@ -98,15 +98,12 @@ namespace Model
 
     ///@{
     
-<<<<<<< HEAD
     inline const Aws::String& GetRequestId() const { return m_requestId; }
     template<typename RequestIdT = Aws::String>
     void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
     template<typename RequestIdT = Aws::String>
     HeadBucketResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
     ///@}
-=======
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
 
     
     inline void SetRequestId(const Aws::String& value) { m_requestId = value; }

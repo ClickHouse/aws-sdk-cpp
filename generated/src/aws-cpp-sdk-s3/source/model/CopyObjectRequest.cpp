@@ -33,7 +33,11 @@ bool CopyObjectRequest::HasEmbeddedError(Aws::IOStream &body,
     return false;
   }
 
+<<<<<<< HEAD
   if (!doc.GetRootElement().IsNull() && doc.GetRootElement().GetName() == Aws::String("Error")) {
+=======
+  if (doc.GetRootElement().GetName() == "Error") {
+>>>>>>> refs/rewritten/master-3
     /// Must not be here because earlier we already checked for an embedded error in PocoHTTPClient (see checkRequestCanReturn2xxAndErrorInBody).
     AWS_FATAL_ASSERT(false);
   }
